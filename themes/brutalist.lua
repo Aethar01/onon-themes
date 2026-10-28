@@ -139,6 +139,11 @@ return {
     prompt = { text = black },
     cursor = { fill = black, width = 3 },
     input_selection = { fill = "#000000/25" },
+    -- Text fields, buttons and check boxes in plugins' views.
+    input = { radius = 0, fill = "#ffffff", border = { width = 3, color = black }, text = black, secondary = "#000000/45" },
+    input_focused = { fill = yellow, border = { width = 3, color = black }, shadow = "4 4 0 0 border" },
+    button_focused = { fill = black, border = { width = 3, color = black }, text = yellow },
+    check = { radius = 0, fill = black },
 
     hint = {
       radius = 0,

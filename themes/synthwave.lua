@@ -166,6 +166,11 @@ return {
     prompt = { text = "accent" },
     cursor = { fill = "accent", width = 2, shadow = "0 0 6 0 accent" },
     input_selection = { fill = "accent/35" },
+    -- Text fields, buttons and check boxes in plugins' views, lit in neon.
+    input = { radius = 5, fill = "background/60", border = { width = 1, color = cyan .. "/50" } },
+    input_focused = { border = { width = 1, color = cyan }, shadow = "0 0 10 0 " .. cyan .. "/50" },
+    button_focused = { fill = cyan .. "/20", border = { width = 1, color = cyan }, shadow = "0 0 16 0 " .. cyan .. "/70" },
+    check = { radius = 2, fill = "accent", shadow = "0 0 6 0 accent" },
 
     hint = {
       radius = 3,

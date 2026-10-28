@@ -175,6 +175,12 @@ return {
     prompt = { text = "accent" },
     cursor = { fill = "accent", width = 2 },
     input_selection = { fill = "accent/35" },
+    -- Text fields, buttons and check boxes in plugins' views; a check is a
+    -- drop of blood.
+    input = { shape = gothic, fill = "background", border = { width = 1, color = "accent/40" } },
+    input_focused = { border = { width = 1, color = "accent" }, shadow = "0 0 12 0 #8a0a1f/50" },
+    button_focused = { fill = "accent/25", text = "#ffffff" },
+    check = { shape = "pill", fill = "accent" },
 
     hint = {
       shape = fanged,

@@ -158,6 +158,11 @@ return {
     prompt = { text = darkest },
     cursor = { fill = darkest .. "/70", width = 7 },
     input_selection = { fill = dark .. "/40" },
+    -- Text fields, buttons and check boxes in plugins' views.
+    input = { shape = pixel(2), fill = lightest, border = { width = 2, color = darkest }, text = darkest, secondary = dark },
+    input_focused = { fill = light, border = { width = 2, color = darkest } },
+    button_focused = { fill = darkest, border = { width = 2, color = darkest }, text = lightest },
+    check = { shape = pixel(1), fill = darkest },
 
     hint = {
       shape = pixel(1.5),

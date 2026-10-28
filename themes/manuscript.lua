@@ -159,6 +159,12 @@ return {
     prompt = { text = "accent" },
     cursor = { fill = "foreground", width = 1.5 },
     input_selection = { fill = "accent/20" },
+    -- Text fields, buttons and check boxes in plugins' views: a field is a
+    -- line written on, a check an ink dot.
+    input = { radius = 0, fill = "none", border = { width = 1, color = "foreground/35", sides = "bottom" } },
+    input_focused = { border = { width = 1.5, color = "accent", sides = "bottom" } },
+    button_focused = { fill = "accent/10" },
+    check = { shape = "pill", fill = "accent" },
 
     hint = {
       shape = askew,

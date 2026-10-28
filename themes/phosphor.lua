@@ -115,6 +115,12 @@ return {
     prompt = { text = "accent" },
     cursor = { fill = "accent/75", width = 8 }, -- a block, as terminals have
     input_selection = { fill = "accent/35" },
+    -- Text fields, buttons and check boxes in plugins' views; a button with
+    -- the keys is inverse video, as the selected row is.
+    input = { radius = 0, fill = "none", border = { width = 1, color = "accent/45" }, text = "accent", secondary = "accent/50" },
+    input_focused = { border = { width = 1, color = "accent" } },
+    button_focused = { fill = "accent", text = "panel" },
+    check = { radius = 0, fill = "accent" },
 
     hint = {
       radius = 0,
