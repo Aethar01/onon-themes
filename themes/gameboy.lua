@@ -1,7 +1,8 @@
 -- gameboy: a onon theme in the four greens of a 1989 handheld.
 --
 -- Every colour is one of four greens. Panels have stair-stepped pixel
--- corners and hard pixel shadows, the selected row gets the triangle
+-- corners and hard pixel shadows, the status bar and tabs float over the
+-- page as pixel buttons, the selected row gets the triangle
 -- cursor of an RPG menu, and pages still rendering show a pixel
 -- heart beating over a loading bar. :colors alt prints the pages
 -- themselves on the green screen.
@@ -119,7 +120,8 @@ return {
   radius = 0,
   padding = 6,
   shadow = false,
-  status_bar_style = "bar",
+  status_bar_style = "pill",
+  tab_bar_style = "pill",
 
   motion = { panel = "none", message = "none", selection = "none", prompt = "none", cursor = "none" },
 
@@ -152,9 +154,17 @@ return {
     scrollbar = { shape = "rect", fill = darkest, width = 4, margin = { 0, 6, 0, 0 } },
     swatch = { radius = 0, border = { width = 2, color = darkest } },
 
-    status = { border = { width = 3, color = darkest, sides = "top" } },
-    status_left = { text = darkest, padding = { 4, 10 } },
-    status_right = { text = dark, padding = { 4, 10 } },
+    -- The status bar: pixel buttons floating over the page.
+    status = { margin = { 0, 14, 14, 14 }, gap = 10 },
+    status_left = {
+      shape = pixel(2),
+      fill = lightest,
+      border = { width = 3, color = darkest, sides = "all" },
+      shadow = "3 3 0 0 " .. dark,
+      text = darkest,
+      padding = { 4, 12 },
+    },
+    status_right = { text = dark },
     prompt = { text = darkest },
     cursor = { fill = darkest .. "/70", width = 7 },
     input_selection = { fill = dark .. "/40" },
@@ -184,6 +194,19 @@ return {
     page = { shadow = "4 4 0 0 " .. dark },
     loader = { fill = darkest, draw = beating_heart },
     autoscroll_marker = { fill = lightest, border = { width = 3, color = darkest } },
+
+    -- Tabs: pixel buttons floating over the page, as the status bar's are,
+    -- the tab shown pressed in, as a focused button is.
+    tab_bar = { margin = { 14, 14, 0, 14 }, gap = 10 },
+    tab = {
+      shape = pixel(2),
+      fill = lightest,
+      border = { width = 3, color = darkest, sides = "all" },
+      shadow = "3 3 0 0 " .. dark,
+      text = dark,
+      padding = { 3, 12 },
+    },
+    tab_selected = { fill = dark, text = lightest },
 
     title_bar = { fill = light },
     title_button = { fill = dark, text = lightest },

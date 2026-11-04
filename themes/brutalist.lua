@@ -78,6 +78,7 @@ return {
   padding = 10,
   shadow = true,
   status_bar_style = "pill",
+  tab_bar_style = "pill",
 
   motion = { scale = 0 },
 
@@ -167,6 +168,20 @@ return {
     page = { border = { width = 2, color = "border" }, shadow = "7 7 0 0 border" },
     loader = { fill = "border", draw = stamping },
     autoscroll_marker = { fill = yellow, border = { width = 3, color = black } },
+
+    -- Tabs: blocks floating over the page, as the status bar's are, the
+    -- tab shown in yellow.
+    tab_bar = { margin = { 14, 16, 0, 16 }, gap = 12 },
+    tab = {
+      shape = "rect",
+      radius = 0,
+      fill = "panel",
+      border = { width = 3, color = "border", sides = "all" },
+      shadow = "5 5 0 0 border",
+      text = "foreground",
+      padding = { 5, 14 },
+    },
+    tab_selected = { fill = yellow, border = { width = 3, color = black, sides = "all" }, text = black },
 
     title_bar = { fill = "panel", border = { width = 3, color = "border", sides = "bottom" } },
     title_button = { fill = yellow, text = black },

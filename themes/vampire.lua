@@ -45,6 +45,12 @@ local function dripping_rule(canvas, box, state)
   canvas:fill(drop(canvas:path(), 22, y + 5, 2.2), "accent")
 end
 
+-- The tab shown: a drop of blood running from the lid of its coffin.
+local function bleeding_tab(canvas, box, state)
+  canvas:default()
+  canvas:fill(drop(canvas:path(), 22, 5, 1.8), "accent")
+end
+
 -- The loader, shown on a page still rendering: three drips swell at the top
 -- of the page's middle, let go and fall, each in its turn.
 local function bleeding_loader(canvas, box, state)
@@ -77,6 +83,7 @@ local gothic = "M9,0 H100%-9 L100%,9 V100%-9 L100%-9,100% H9 L0,100%-9 V9 Z"
 
 -- The status pills are coffins, laid head to head.
 local coffin_left = "M0,32% L12,0 H100%-7 L100%,22% V78% L100%-7,100% H12 L0,68% Z"
+local coffin_tab = "M0,30% L9,0 H100%-9 L100%,30% V70% L100%-9,100% H9 L0,70% Z"
 local coffin_right = "M0,22% L7,0 H100%-12 L100%,32% V68% L100%-12,100% H7 L0,78% Z"
 
 -- Link hints bare a pair of fangs below them.
@@ -121,6 +128,7 @@ return {
   padding = 8,
   shadow = true,
   status_bar_style = "pill",
+  tab_bar_style = "pill",
 
   motion = {
     panel = "180ms ease-out", -- menus rise out of the dark
@@ -204,6 +212,23 @@ return {
     page = { shadow = "0 0 0 1 #000000/50, 0 10 30 0 #4a000c/45" },
     loader = { fill = "accent", draw = bleeding_loader },
     autoscroll_marker = { fill = "#170c0fe0", border = { width = 1.5, color = "accent" } },
+
+    -- Tabs: coffins floating over the page, as the status bar's are, the
+    -- tab shown glowing, with blood running from its lid.
+    tab_bar = { margin = { 12, 14, 0, 14 }, gap = 10 },
+    tab = {
+      shape = coffin_tab,
+      fill = "status_bar",
+      border = { width = 1, color = "accent/25", sides = "all" },
+      text = "muted",
+      padding = { 5, 20 },
+    },
+    tab_selected = {
+      border = { width = 1, color = "accent/60", sides = "all" },
+      shadow = "0 0 14 0 #8a0a1f/40, 0 4 12 shadow",
+      text = "#ffffff",
+      draw = bleeding_tab,
+    },
 
     title_bar = { fill = "status_bar" },
     title_close = { fill = "accent", text = "#ffffff" },

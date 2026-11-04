@@ -112,6 +112,7 @@ return {
   padding = 8,
   shadow = true,
   status_bar_style = "pill",
+  tab_bar_style = "pill",
 
   motion = {
     panel = "160ms ease-out",
@@ -194,6 +195,18 @@ return {
     page = { shadow = "0 0 24 2 accent/25, 0 0 60 10 " .. cyan .. "/10" },
     loader = { fill = "accent", draw = sunset },
     autoscroll_marker = { fill = "#1d0b3de0", border = { width = 1.5, color = "accent" } },
+
+    -- Tabs: neon pills floating over the page, as the status bar's are, the
+    -- tab shown lit up.
+    tab_bar = { margin = { 12, 16, 0, 16 }, gap = 10 },
+    tab = {
+      shape = "pill",
+      fill = "status_bar",
+      border = { width = 1, color = "accent/40", sides = "all" },
+      text = "muted",
+      padding = { 4, 16 },
+    },
+    tab_selected = { border = { width = 1, color = "accent", sides = "all" }, shadow = "0 0 14 1 accent/55", text = "#ffffff" },
 
     title_bar = { fill = "status_bar" },
     title_close = { fill = "accent", text = "#ffffff" },

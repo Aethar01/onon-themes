@@ -145,6 +145,11 @@ return {
     loader = { fill = "accent", draw = terminal_loader },
     autoscroll_marker = { fill = "#020603e0", border = { width = 1.5, color = "accent" } },
 
+    -- Tabs: the tab shown in inverse video, as the selected row is.
+    tab_bar = { fill = "status_bar", border = { width = 1, color = "accent/40", sides = "bottom" }, gap = 2 },
+    tab = { radius = 0, text = "muted", padding = { 3, 10 } },
+    tab_selected = { fill = "accent", border = { width = 0 }, text = "panel" },
+
     title_bar = { fill = "status_bar" },
     title_button = { fill = "accent/20" },
     title_close = { fill = "accent", text = "panel" },

@@ -67,6 +67,7 @@ return {
   padding = 10,
   shadow = true,
   status_bar_style = "pill",
+  tab_bar_style = "pill",
 
   motion = {
     panel = "260ms ease-out", -- menus fade in and out
@@ -105,7 +106,7 @@ return {
     scrollbar = { fill = "foreground/25", width = 4, margin = { 0, 4, 0, 0 } },
     swatch = { shape = "pill", border = { width = 1, color = "foreground/20" } },
 
-    status = { margin = { 0, 0, 16, 0 }, gap = 10 },
+    status = { margin = { 0, 16, 16, 16 }, gap = 10 },
     status_left = {
       shape = "pill",
       fill = "status_bar/70",
@@ -145,6 +146,19 @@ return {
     page = { shadow = "0 12 32 0 shadow/45, 0 1 3 0 shadow/35" },
     loader = { fill = "accent", draw = orbit },
     autoscroll_marker = { fill = "panel/80", border = { width = 1, color = "foreground/30" } },
+
+    -- Tabs: frosted pills floating over the page, as the status bar's are,
+    -- the tab shown only by its name, in bold.
+    tab_bar = { margin = { 16, 16, 0, 16 }, gap = 8 },
+    tab = {
+      shape = "pill",
+      fill = "status_bar/70",
+      border = { width = 1, color = "border/45", sides = "all" },
+      shadow = "0 10 28 0 shadow/55, 0 1 3 0 shadow/30",
+      text = "muted",
+      padding = { 4, 16 },
+    },
+    tab_selected = { border = { width = 1, color = "border/45", sides = "all" }, text = "foreground", bold = true },
 
     title_bar = { fill = "status_bar/80" },
     title_button = { fill = "foreground/10" },
