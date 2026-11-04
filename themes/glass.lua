@@ -105,7 +105,7 @@ return {
     scrollbar = { fill = "foreground/25", width = 4, margin = { 0, 4, 0, 0 } },
     swatch = { shape = "pill", border = { width = 1, color = "foreground/20" } },
 
-    status = { margin = { 0, 0, 16, 0 }, gap = 10 },
+    status = { margin = { 0, 16, 16, 16 }, gap = 10 },
     status_left = {
       shape = "pill",
       fill = "status_bar/70",
@@ -148,7 +148,7 @@ return {
 
     -- Tabs: frosted pills floating over the page, as the status bar's are,
     -- the tab shown only by its name, in bold.
-    tab_bar = { floating = true, margin = { 12, 12, 0, 12 }, gap = 8 },
+    tab_bar = { floating = true, margin = { 16, 16, 0, 16 }, gap = 8 },
     tab = {
       shape = "pill",
       fill = "status_bar/70",
