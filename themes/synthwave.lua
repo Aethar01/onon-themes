@@ -112,6 +112,7 @@ return {
   padding = 8,
   shadow = true,
   status_bar_style = "pill",
+  tab_bar_style = "pill",
 
   motion = {
     panel = "160ms ease-out",
@@ -197,7 +198,7 @@ return {
 
     -- Tabs: neon pills floating over the page, as the status bar's are, the
     -- tab shown lit up.
-    tab_bar = { floating = true, margin = { 12, 16, 0, 16 }, gap = 10 },
+    tab_bar = { margin = { 12, 16, 0, 16 }, gap = 10 },
     tab = {
       shape = "pill",
       fill = "status_bar",

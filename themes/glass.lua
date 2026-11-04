@@ -67,6 +67,7 @@ return {
   padding = 10,
   shadow = true,
   status_bar_style = "pill",
+  tab_bar_style = "pill",
 
   motion = {
     panel = "260ms ease-out", -- menus fade in and out
@@ -148,7 +149,7 @@ return {
 
     -- Tabs: frosted pills floating over the page, as the status bar's are,
     -- the tab shown only by its name, in bold.
-    tab_bar = { floating = true, margin = { 16, 16, 0, 16 }, gap = 8 },
+    tab_bar = { margin = { 16, 16, 0, 16 }, gap = 8 },
     tab = {
       shape = "pill",
       fill = "status_bar/70",

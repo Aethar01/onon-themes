@@ -121,6 +121,7 @@ return {
   padding = 6,
   shadow = false,
   status_bar_style = "pill",
+  tab_bar_style = "pill",
 
   motion = { panel = "none", message = "none", selection = "none", prompt = "none", cursor = "none" },
 
@@ -196,7 +197,7 @@ return {
 
     -- Tabs: pixel buttons floating over the page, as the status bar's are,
     -- the tab shown pressed in, as a focused button is.
-    tab_bar = { floating = true, margin = { 14, 14, 0, 14 }, gap = 10 },
+    tab_bar = { margin = { 14, 14, 0, 14 }, gap = 10 },
     tab = {
       shape = pixel(2),
       fill = lightest,

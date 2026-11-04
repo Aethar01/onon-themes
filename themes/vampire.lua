@@ -128,6 +128,7 @@ return {
   padding = 8,
   shadow = true,
   status_bar_style = "pill",
+  tab_bar_style = "pill",
 
   motion = {
     panel = "180ms ease-out", -- menus rise out of the dark
@@ -214,7 +215,7 @@ return {
 
     -- Tabs: coffins floating over the page, as the status bar's are, the
     -- tab shown glowing, with blood running from its lid.
-    tab_bar = { floating = true, margin = { 12, 14, 0, 14 }, gap = 10 },
+    tab_bar = { margin = { 12, 14, 0, 14 }, gap = 10 },
     tab = {
       shape = coffin_tab,
       fill = "status_bar",

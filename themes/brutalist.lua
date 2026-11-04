@@ -78,6 +78,7 @@ return {
   padding = 10,
   shadow = true,
   status_bar_style = "pill",
+  tab_bar_style = "pill",
 
   motion = { scale = 0 },
 
@@ -170,7 +171,7 @@ return {
 
     -- Tabs: blocks floating over the page, as the status bar's are, the
     -- tab shown in yellow.
-    tab_bar = { floating = true, margin = { 14, 16, 0, 16 }, gap = 12 },
+    tab_bar = { margin = { 14, 16, 0, 16 }, gap = 12 },
     tab = {
       shape = "rect",
       radius = 0,
