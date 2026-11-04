@@ -185,6 +185,11 @@ return {
     loader = { fill = darkest, draw = beating_heart },
     autoscroll_marker = { fill = lightest, border = { width = 3, color = darkest } },
 
+    -- Tabs: the tab shown a pixel-cornered button, as the menus' are.
+    tab_bar = { fill = "status_bar", border = { width = 3, color = darkest, sides = "bottom" }, padding = { 3, 4, 0, 4 }, gap = 4 },
+    tab = { text = dark, padding = { 3, 12 } },
+    tab_selected = { shape = pixel(2), fill = lightest, border = { width = 2, color = darkest, sides = "all" }, text = darkest },
+
     title_bar = { fill = light },
     title_button = { fill = dark, text = lightest },
     title_close = { fill = darkest, text = lightest },

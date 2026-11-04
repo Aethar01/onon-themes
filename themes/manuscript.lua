@@ -58,6 +58,12 @@ local function squiggle(x0, x1, y, amp, period, phase)
   return table.concat(parts, " ")
 end
 
+-- The tab shown: underlined by hand, as the selected row is.
+local function underlined_tab(canvas, box, state)
+  canvas:default()
+  canvas:stroke(squiggle(10, box.w - 10, box.h - 4, 1.2, 8), "accent", 1.3)
+end
+
 -- The selected row: a faint wash, and the row underlined by hand.
 local function underlined(canvas, box, state)
   canvas:default()
@@ -187,6 +193,11 @@ return {
     page = { shadow = "0 1 2 0 shadow/60, 1 5 14 0 shadow/40" },
     loader = { fill = "foreground", draw = writing },
     autoscroll_marker = { fill = "#fbf5e6e0", border = { width = 1.2, color = "foreground" } },
+
+    -- Tabs: the tab shown underlined by hand, as the selected row is.
+    tab_bar = { fill = "status_bar", border = { width = 1, color = "border", sides = "bottom" } },
+    tab = { text = "muted", padding = { 4, 14 } },
+    tab_selected = { fill = "accent/7", border = { width = 0 }, text = "foreground", draw = underlined_tab },
 
     title_bar = { fill = "status_bar" },
     title_close = { fill = "accent", text = "#ffffff" },

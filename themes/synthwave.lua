@@ -195,6 +195,11 @@ return {
     loader = { fill = "accent", draw = sunset },
     autoscroll_marker = { fill = "#1d0b3de0", border = { width = 1.5, color = "accent" } },
 
+    -- Tabs: the tab shown outlined in glowing neon.
+    tab_bar = { fill = "status_bar", border = { width = 1, color = "accent/60", sides = "bottom" }, padding = { 4, 6 }, gap = 6 },
+    tab = { radius = 5, text = "muted", padding = { 3, 12 } },
+    tab_selected = { fill = "accent/22", border = { width = 1, color = "accent/70", sides = "all" }, shadow = "0 0 12 0 accent/55", text = "#ffffff" },
+
     title_bar = { fill = "status_bar" },
     title_close = { fill = "accent", text = "#ffffff" },
   },

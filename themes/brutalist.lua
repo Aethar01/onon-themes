@@ -168,6 +168,11 @@ return {
     loader = { fill = "border", draw = stamping },
     autoscroll_marker = { fill = yellow, border = { width = 3, color = black } },
 
+    -- Tabs: the bar ruled off from the page, the tab shown a yellow block.
+    tab_bar = { fill = "status_bar", border = { width = 3, color = "border", sides = "bottom" }, padding = { 4, 6, 0, 6 }, gap = 4 },
+    tab = { radius = 0, text = "muted", padding = { 4, 14 } },
+    tab_selected = { fill = yellow, border = { width = 3, color = black, sides = "top left right" }, text = black },
+
     title_bar = { fill = "panel", border = { width = 3, color = "border", sides = "bottom" } },
     title_button = { fill = yellow, text = black },
     title_close = { fill = "accent", text = "#ffffff" },

@@ -45,6 +45,13 @@ local function dripping_rule(canvas, box, state)
   canvas:fill(drop(canvas:path(), 22, y + 5, 2.2), "accent")
 end
 
+-- The tab shown: a line of blood along its top, one drop running down.
+local function bleeding_tab(canvas, box, state)
+  canvas:default()
+  canvas:fill(fmt("M0,0 H%f V2 H0 Z", box.w), "accent")
+  canvas:fill(drop(canvas:path(), 12, 6, 1.8), "accent")
+end
+
 -- The loader, shown on a page still rendering: three drips swell at the top
 -- of the page's middle, let go and fall, each in its turn.
 local function bleeding_loader(canvas, box, state)
@@ -204,6 +211,11 @@ return {
     page = { shadow = "0 0 0 1 #000000/50, 0 10 30 0 #4a000c/45" },
     loader = { fill = "accent", draw = bleeding_loader },
     autoscroll_marker = { fill = "#170c0fe0", border = { width = 1.5, color = "accent" } },
+
+    -- Tabs: blood running down from the top of the tab shown.
+    tab_bar = { fill = "status_bar", border = { width = 1, color = "accent/40", sides = "bottom" } },
+    tab = { text = "muted", padding = { 4, 16 } },
+    tab_selected = { fill = "accent/18", border = { width = 0 }, text = "#ffffff", draw = bleeding_tab },
 
     title_bar = { fill = "status_bar" },
     title_close = { fill = "accent", text = "#ffffff" },
