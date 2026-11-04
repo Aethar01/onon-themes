@@ -136,6 +136,7 @@ return {
     selection = "120ms cubic-bezier(0.2, 0.9, 0.25, 1)",
     prompt = "150ms ease-out",
     cursor = "60ms ease-out",
+    edges = "180ms ease-out", -- the coffins slide out from the edges
   },
 
   elements = {

@@ -129,6 +129,9 @@ return {
     panel = "220ms ease-out", -- the sheet settles onto the desk
     message = "260ms ease",
     selection = "140ms ease-in-out",
+    prompt = "100ms ease-out",
+    cursor = "50ms ease-out",
+    edges = "220ms ease-in-out", -- the bars slide in like a sheet drawn across
   },
 
   elements = {
