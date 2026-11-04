@@ -146,10 +146,18 @@ return {
     loader = { fill = "accent", draw = orbit },
     autoscroll_marker = { fill = "panel/80", border = { width = 1, color = "foreground/30" } },
 
-    -- Tabs: a frosted strip, the tab shown a tinted pane like the selected row.
-    tab_bar = { fill = "status_bar/80", border = { width = 0 }, padding = { 4, 6 }, gap = 4 },
-    tab = { radius = 10, text = "muted", padding = { 3, 14 } },
-    tab_selected = { fill = "accent/16", border = { width = 1, color = "accent/30", sides = "all" }, text = "foreground" },
+    -- Tabs: frosted pills floating over the page, as the status bar's are,
+    -- the tab shown tinted like the selected row.
+    tab_bar = { floating = true, margin = { 12, 12, 0, 12 }, gap = 8 },
+    tab = {
+      shape = "pill",
+      fill = "status_bar/70",
+      border = { width = 1, color = "border/45", sides = "all" },
+      shadow = "0 10 28 0 shadow/55, 0 1 3 0 shadow/30",
+      text = "muted",
+      padding = { 4, 16 },
+    },
+    tab_selected = { fill = "status_bar/90", border = { width = 1, color = "accent/45", sides = "all" }, text = "foreground" },
 
     title_bar = { fill = "status_bar/80" },
     title_button = { fill = "foreground/10" },
