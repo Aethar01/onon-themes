@@ -147,7 +147,7 @@ return {
     autoscroll_marker = { fill = "panel/80", border = { width = 1, color = "foreground/30" } },
 
     -- Tabs: frosted pills floating over the page, as the status bar's are,
-    -- the tab shown tinted like the selected row.
+    -- the tab shown only by its name, in bold.
     tab_bar = { floating = true, margin = { 12, 12, 0, 12 }, gap = 8 },
     tab = {
       shape = "pill",
@@ -157,7 +157,7 @@ return {
       text = "muted",
       padding = { 4, 16 },
     },
-    tab_selected = { fill = "status_bar/90", border = { width = 1, color = "accent/45", sides = "all" }, text = "foreground" },
+    tab_selected = { border = { width = 1, color = "border/45", sides = "all" }, text = "foreground", bold = true },
 
     title_bar = { fill = "status_bar/80" },
     title_button = { fill = "foreground/10" },
