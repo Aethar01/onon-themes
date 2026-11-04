@@ -2,8 +2,9 @@
 --
 -- Translucent menus and status pills with soft rounded corners and deep
 -- diffuse shadows, so the document shows through everything that floats
--- over it. Menus and messages fade in and out, and the selection and the
--- status pills ease into place. :colors alt is the same glass at night.
+-- over it. Menus and messages fade in and out, the selection and the
+-- status pills ease into place, and the pills glide in and out from the
+-- window's edges. :colors alt is the same glass at night.
 --
 -- Showcases: translucent fills ("#RRGGBBAA" and "colour/opacity"), element
 -- opacity, and the fade transitions that are off by default.
@@ -75,6 +76,7 @@ return {
     selection = "200ms cubic-bezier(0.22, 1, 0.36, 1)",
     prompt = "240ms cubic-bezier(0.22, 1, 0.36, 1)",
     cursor = "90ms ease-out",
+    edges = "240ms cubic-bezier(0.22, 1, 0.36, 1)", -- the pills glide in from the edges
   },
 
   elements = {

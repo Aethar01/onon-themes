@@ -121,6 +121,7 @@ return {
     selection = "260ms cubic-bezier(0.3, 1.5, 0.5, 1)",
     prompt = "200ms cubic-bezier(0.3, 1.3, 0.5, 1)",
     cursor = "70ms ease-out",
+    edges = "220ms cubic-bezier(0.3, 1.3, 0.5, 1)", -- the pills spring in from the edges too
   },
 
   elements = {
