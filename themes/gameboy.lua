@@ -123,7 +123,7 @@ return {
   status_bar_style = "pill",
   tab_bar_style = "pill",
 
-  motion = { panel = "none", message = "none", selection = "none", prompt = "none", cursor = "none", edges = "none" },
+  motion = { scale = 0 },
 
   elements = {
     panel = {

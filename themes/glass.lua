@@ -7,7 +7,7 @@
 -- window's edges. :colors alt is the same glass at night.
 --
 -- Showcases: translucent fills ("#RRGGBBAA" and "colour/opacity"), element
--- opacity, and the fade transitions that are off by default.
+-- opacity, and slow, soft transitions.
 --
 -- Pick it with :theme glass.
 
