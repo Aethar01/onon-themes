@@ -2,11 +2,11 @@
 --
 -- Cream paper ruled in faint blue with a red margin, headings in rubric
 -- red, and panels torn from the page. The selected row is underlined by
--- hand, and the loader is a pen writing a line. :colors alt turns the
--- pages to sepia for reading by lamplight.
+-- hand, the pen drawing each line anew, and the loader is a pen writing a
+-- line. :colors alt turns the pages to sepia for reading by lamplight.
 --
 -- Showcases: shape functions (the torn paper is computed in Lua), strokes,
--- and the font's style.
+-- the font's style, and a selection that wipes in rather than gliding.
 --
 -- Pick it with :theme manuscript.
 
@@ -126,12 +126,16 @@ return {
   status_bar_style = "bar",
 
   motion = {
-    panel = "220ms ease-out", -- the sheet settles onto the desk
-    message = "260ms ease",
-    selection = "140ms ease-in-out",
-    prompt = "100ms ease-out",
-    cursor = "50ms ease-out",
-    edges = "220ms ease-in-out", -- the bars slide in like a sheet drawn across
+    -- The sheet is laid down a touch large and settles onto the desk.
+    panel = { enter = "fade scale:1.03 220ms ease-out", exit = "fade 160ms ease-in" },
+    message = "fade 260ms ease",
+    -- Each row selected is underlined anew, the pen drawn left to right,
+    -- and the old line taken back the way it came.
+    selection = "wipe from:left 220ms ease-out",
+    overview_selection = "fade 180ms ease-in-out",
+    prompt = "glide 100ms ease-out",
+    cursor = "glide 50ms ease-out",
+    edges = "slide 220ms ease-in-out", -- the bars slide in like a sheet drawn across
   },
 
   elements = {

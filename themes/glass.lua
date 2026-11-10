@@ -2,12 +2,14 @@
 --
 -- Translucent menus and status pills with soft rounded corners and deep
 -- diffuse shadows, so the document shows through everything that floats
--- over it. Menus and messages fade in and out, the selection and the
--- status pills ease into place, and the pills glide in and out from the
--- window's edges. :colors alt is the same glass at night.
+-- over it. Menus rise into focus and settle, their rows drifting up one by
+-- one, the selection and the status pills ease into place, and the pills
+-- glide in and out from the window's edges. :colors alt is the same glass
+-- at night.
 --
 -- Showcases: translucent fills ("#RRGGBBAA" and "colour/opacity"), element
--- opacity, and slow, soft transitions.
+-- opacity, motion with several tracks and staggered rows, and a reduced
+-- motion table that crossfades where the rest moves.
 --
 -- Pick it with :theme glass.
 
@@ -71,12 +73,25 @@ return {
   tab_bar_style = "pill",
 
   motion = {
-    panel = "260ms ease-out", -- menus fade in and out
-    message = "320ms ease-in-out", -- and so do messages
-    selection = "200ms cubic-bezier(0.22, 1, 0.36, 1)",
-    prompt = "240ms cubic-bezier(0.22, 1, 0.36, 1)",
-    cursor = "90ms ease-out",
-    edges = "240ms cubic-bezier(0.22, 1, 0.36, 1)", -- the pills glide in from the edges
+    -- Panes rise into focus and settle, and sink back as they go.
+    panel = {
+      enter = "fade rise zoom 260ms cubic-bezier(0.22, 1, 0.36, 1)",
+      exit = "fade zoom 180ms ease-in",
+    },
+    rows = { enter = "fade y:6px 220ms ease-out stagger:12ms" }, -- the rows drift up one by one
+    message = "fade rise 320ms ease-in-out",
+    selection = "glide 200ms cubic-bezier(0.22, 1, 0.36, 1)",
+    overview_selection = "glide 200ms cubic-bezier(0.22, 1, 0.36, 1)",
+    prompt = "glide 240ms cubic-bezier(0.22, 1, 0.36, 1)",
+    cursor = "glide 90ms ease-out",
+    edges = "fade slide 240ms cubic-bezier(0.22, 1, 0.36, 1)", -- the pills glide in from the edges
+    -- With less motion the glass only clears and clouds: nothing moves, and
+    -- the selection crossfades from row to row.
+    reduced = {
+      panel = { enter = "fade 220ms ease-out", exit = "fade 160ms ease-in" },
+      selection = "crossfade 160ms ease-in-out",
+      overview_selection = "crossfade 160ms ease-in-out",
+    },
   },
 
   elements = {

@@ -131,12 +131,14 @@ return {
   tab_bar_style = "pill",
 
   motion = {
-    panel = "180ms ease-out", -- menus rise out of the dark
-    message = "240ms ease-in-out",
-    selection = "120ms cubic-bezier(0.2, 0.9, 0.25, 1)",
-    prompt = "150ms ease-out",
-    cursor = "60ms ease-out",
-    edges = "180ms ease-out", -- the coffins slide out from the edges
+    -- Menus rise out of the dark and sink back into it.
+    panel = { enter = "fade rise 220ms ease-out", exit = "fade rise 180ms ease-in" },
+    message = "fade 240ms ease-in-out",
+    selection = "glide 120ms cubic-bezier(0.2, 0.9, 0.25, 1)",
+    overview_selection = "glide 120ms cubic-bezier(0.2, 0.9, 0.25, 1)",
+    prompt = "glide 150ms ease-out",
+    cursor = "glide 60ms ease-out",
+    edges = "slide 180ms ease-out", -- the coffins slide out from the edges
   },
 
   elements = {

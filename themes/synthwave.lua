@@ -2,12 +2,14 @@
 --
 -- Hot pink and cyan glowing on deep violet. Every panel has layered neon
 -- shadows, menu titles are underlined with a pink-to-cyan gradient, the
--- selection springs past each row and settles, and pages still rendering
--- show a striped sun setting over a grid rolling toward you. :colors alt
--- swaps the accent to cyan and the pages to violet.
+-- selection springs past each row and settles, menus pop in on a spring
+-- with their rows chasing in after them, and pages still rendering show a
+-- striped sun setting over a grid rolling toward you. :colors alt swaps
+-- the accent to cyan and the pages to violet.
 --
 -- Showcases: layered shadows, colours computed in Lua, an overshooting
--- cubic-bezier easing, and an animated loader.
+-- cubic-bezier easing, spring easings, staggered rows, and an animated
+-- loader.
 --
 -- Pick it with :theme synthwave.
 
@@ -115,13 +117,17 @@ return {
   tab_bar_style = "pill",
 
   motion = {
-    panel = "160ms ease-out",
-    message = "200ms ease",
+    -- Menus pop in on a loose spring, overshooting and settling, and their
+    -- rows cascade in from the left like a chase light.
+    panel = { enter = "fade pop 420ms spring(260, 16)", exit = "fade zoom 140ms ease-in" },
+    rows = { enter = "fade x:-16px 200ms ease-out stagger:14ms" },
+    message = "fade slide from:left 320ms spring(240, 20)",
     -- y above 1 overshoots: the highlight springs past the row and back
-    selection = "260ms cubic-bezier(0.3, 1.5, 0.5, 1)",
-    prompt = "200ms cubic-bezier(0.3, 1.3, 0.5, 1)",
-    cursor = "70ms ease-out",
-    edges = "220ms cubic-bezier(0.3, 1.3, 0.5, 1)", -- the pills spring in from the edges too
+    selection = "glide 260ms cubic-bezier(0.3, 1.5, 0.5, 1)",
+    overview_selection = "glide 260ms cubic-bezier(0.3, 1.5, 0.5, 1)",
+    prompt = "glide 200ms cubic-bezier(0.3, 1.3, 0.5, 1)",
+    cursor = "glide 70ms ease-out",
+    edges = "slide 220ms cubic-bezier(0.3, 1.3, 0.5, 1)", -- the pills spring in from the edges too
   },
 
   elements = {
