@@ -7,6 +7,11 @@
 -- striped sun setting over a grid rolling toward you. :colors alt swaps
 -- the accent to cyan and the pages to violet.
 --
+-- With onon.options.shaders = true, the menus, status pill, tabs and link
+-- preview draw synthwave.glsl, beside this file: what is behind each pane
+-- with its red and blue split apart, a tracking line drifting slowly down
+-- through it, and a neon rim fading from pink to cyan.
+--
 -- Showcases: layered shadows, colours computed in Lua, an overshooting
 -- cubic-bezier easing, spring easings, staggered rows, and an animated
 -- loader.
@@ -76,7 +81,7 @@ local function sunset(canvas, box, state)
   end
 end
 
-return {
+local theme = {
   base = "moss",
 
   background = "#12062b",
@@ -219,3 +224,19 @@ return {
     title_close = { fill = "accent", text = "#ffffff" },
   },
 }
+
+-- With shaders on, the panes draw synthwave.glsl, under fills thin enough
+-- to show it.
+if onon.options.shaders then
+  local e = theme.elements
+
+  for _, name in ipairs({ "panel", "status_left", "tab", "link_preview" }) do
+    e[name].shader = "synthwave.glsl"
+  end
+  e.panel.fill = "panel/40"
+  e.status_left.fill = "status_bar/40"
+  e.tab.fill = "status_bar/40"
+  e.link_preview.fill = "panel/40"
+end
+
+return theme

@@ -5,6 +5,11 @@
 -- the selected row is inverted with an arrow cut into it. :colors alt
 -- inverts everything, the pages included.
 --
+-- With onon.options.shaders = true, the menus, status pill, tabs and link
+-- preview draw brutalist.glsl, beside this file: a coarse screen of black
+-- dots on white, growing toward the hard shadow, or white on black with
+-- :colors alt.
+--
 -- Showcases: shadows as graphics (offset, unblurred), borders on chosen
 -- sides, colours fixed regardless of colour mode beside palette colours
 -- that follow it, and drawing that steps rather than glides.
@@ -38,7 +43,7 @@ local function stamping(canvas, box, state)
   end
 end
 
-return {
+local theme = {
   base = "classic",
 
   background = "#e9e6dc",
@@ -188,3 +193,19 @@ return {
     title_close = { fill = "accent", text = "#ffffff" },
   },
 }
+
+-- With shaders on, the panes draw brutalist.glsl, under fills thin enough
+-- to show it.
+if onon.options.shaders then
+  local e = theme.elements
+
+  for _, name in ipairs({ "panel", "status_left", "tab", "link_preview" }) do
+    e[name].shader = "brutalist.glsl"
+  end
+  e.panel.fill = "panel/25"
+  e.status_left.fill = "#ffe500c0" -- the safety yellow, the dots faint through it
+  e.tab.fill = "panel/25"
+  e.link_preview.fill = "panel/25"
+end
+
+return theme

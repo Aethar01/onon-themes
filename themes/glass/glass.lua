@@ -7,6 +7,11 @@
 -- glide in and out from the window's edges. :colors alt is the same glass
 -- at night.
 --
+-- With onon.options.shaders = true, the menus, status pills and tabs draw
+-- glass.glsl, beside this file: what is behind each pane, softened, bent
+-- at the rim as by a lens, and lit along its edge. Their fills are
+-- thinner then, tinting the shader rather than standing in for it.
+--
 -- Showcases: translucent fills ("#RRGGBBAA" and "colour/opacity"), element
 -- opacity, motion with several tracks and staggered rows, and a reduced
 -- motion table that crossfades where the rest moves.
@@ -38,7 +43,7 @@ local function orbit(canvas, box, state)
   end
 end
 
-return {
+local theme = {
   base = "moss",
 
   background = "#dfe4ec",
@@ -187,3 +192,18 @@ return {
     title_button = { fill = "foreground/10" },
   },
 }
+
+-- With shaders on, the panes draw glass.glsl, under fills thin enough
+-- to show it.
+if onon.options.shaders then
+  local e = theme.elements
+
+  for _, name in ipairs({ "panel", "status_left", "tab", "link_preview" }) do
+    e[name].shader = "glass.glsl"
+  end
+  e.panel.fill = "panel/38"
+  e.status_left.fill = "status_bar/30"
+  e.tab.fill = "status_bar/30"
+end
+
+return theme

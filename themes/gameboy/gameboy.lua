@@ -7,6 +7,11 @@
 -- heart beating over a loading bar. :colors alt prints the pages
 -- themselves on the green screen.
 --
+-- With onon.options.shaders = true, the menus, status pill, tabs and link
+-- preview draw gameboy.glsl, beside this file: what is behind each pane
+-- in the four greens, in big pixels with ordered dithering between the
+-- shades, and a faint grid between them.
+--
 -- Showcases: a small fixed palette, shape functions generating pixel
 -- stairs at any size, and pixel art drawn from a bitmap in Lua.
 --
@@ -82,7 +87,7 @@ local function beating_heart(canvas, box, state)
   end
 end
 
-return {
+local theme = {
   base = "classic",
 
   background = light,
@@ -213,3 +218,22 @@ return {
     title_close = { fill = darkest, text = lightest },
   },
 }
+
+-- With shaders on, the panes draw gameboy.glsl, under fills thin enough
+-- to show it.
+if onon.options.shaders then
+  local e = theme.elements
+
+  for _, name in ipairs({ "panel", "status_left", "tab", "link_preview" }) do
+    e[name].shader = "gameboy.glsl"
+  end
+  e.panel.fill = "panel/35"
+  e.status_left.fill = "panel/35"
+  e.tab.fill = "panel/35"
+  e.link_preview.fill = "panel/35"
+  for _, name in ipairs({ "panel", "status_left", "tab", "link_preview" }) do
+    e[name].shadow = false -- the shader is drawn over what is behind it, not over a shadow
+  end
+end
+
+return theme

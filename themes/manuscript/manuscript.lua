@@ -5,6 +5,11 @@
 -- hand, the pen drawing each line anew, and the loader is a pen writing a
 -- line. :colors alt turns the pages to sepia for reading by lamplight.
 --
+-- With onon.options.shaders = true, the menus, status pill, tabs and link
+-- preview draw manuscript.glsl, beside this file: what is behind each
+-- pane faint and yellowed through the sheet, with its fibres and grain,
+-- and ink soaked in along its torn edges.
+--
 -- Showcases: shape functions (the torn paper is computed in Lua), strokes,
 -- the font's style, and a selection that wipes in rather than gliding.
 --
@@ -85,7 +90,7 @@ local function writing(canvas, box, state)
   canvas:rect(x1 - 1.5, y - 1.5, 3, 3, "foreground", 1.5)
 end
 
-return {
+local theme = {
   base = "birch",
 
   background = "#d9ccb2",
@@ -210,3 +215,19 @@ return {
     title_close = { fill = "accent", text = "#ffffff" },
   },
 }
+
+-- With shaders on, the panes draw manuscript.glsl, under fills thin enough
+-- to show it.
+if onon.options.shaders then
+  local e = theme.elements
+
+  for _, name in ipairs({ "panel", "status_left", "tab", "link_preview" }) do
+    e[name].shader = "manuscript.glsl"
+  end
+  e.panel.fill = "panel/30"
+  e.status_left.fill = "status_bar/30"
+  e.tab.fill = "status_bar/30"
+  e.link_preview.fill = "panel/30"
+end
+
+return theme

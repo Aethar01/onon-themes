@@ -5,23 +5,16 @@ Example themes for [onon](https://github.com/Aethar01/onon), a quiet reader for 
 | Theme | Look |
 |---|---|
 | [`brutalist`](./themes/brutalist/brutalist.lua) | Black lines, hard shadows and safety yellow. |
-| [`halftone`](./themes/brutalist/halftone.lua) | Brutalist printed on a coarse screen of dots that grow toward the hard shadow. |
 | [`gameboy`](./themes/gameboy/gameboy.lua) | The four greens of a 1989 handheld, with pixel corners. |
-| [`lcd`](./themes/gameboy/lcd.lua) | Gameboy with the page behind each pane in big dithered pixels and a faint grid. |
 | [`glass`](./themes/glass/glass.lua) | Frosted, translucent panes floating over the page. |
-| [`liquid`](./themes/glass/liquid.lua) | Glass run through a shader: the page behind each pane blurred, bent at the rim and lit along its edge. |
 | [`manuscript`](./themes/manuscript/manuscript.lua) | Iron-gall ink on vellum, with panels torn from the page. |
-| [`vellum`](./themes/manuscript/vellum.lua) | Manuscript on calfskin: grain and fibres, the page faint and yellowed beneath, ink soaked into the edges. |
 | [`phosphor`](./themes/phosphor/phosphor.lua) | The green-screen terminals of the 1980s. |
-| [`crt`](./themes/phosphor/crt.lua) | Phosphor on a curved tube, with scanlines, bloom and a faint flicker. |
 | [`synthwave`](./themes/synthwave/synthwave.lua) | Pink and cyan neon on deep violet. |
-| [`vhs`](./themes/synthwave/vhs.lua) | Synthwave off a worn tape: colour fringing, a drifting tracking line and a neon rim. |
 | [`vampire`](./themes/vampire/vampire.lua) | Blood on black, for reading after dark. |
-| [`nosferatu`](./themes/vampire/nosferatu.lua) | Vampire with blood seeping in from the edges of each pane to a slow heartbeat. |
 
 ## Install
 
-These themes need onon 0.14.10 or newer, which finds themes kept in folders of their own, as these are.
+These themes need onon 0.14.12 or newer, which finds themes kept in folders of their own and lets them see whether shaders are on.
 
 Clone the repository into your onon directory and link its `themes` directory beside it:
 
@@ -50,13 +43,13 @@ Copy-Item -Recurse "$env:APPDATA\onon\onon-themes\themes\*" "$env:APPDATA\onon\t
 
 Each one also has an alternate colour mode, which `:colors alt` turns on.
 
-`liquid`, `crt`, `vhs`, `lcd`, `vellum`, `halftone` and `nosferatu` draw their panes with GLSL shaders. Shaders are experimental in onon, so turn them on in `config.lua` and restart onon:
+Each theme also draws its panes with a GLSL shader when shaders are on: a CRT tube for `phosphor`, a worn tape for `synthwave`, a dithered LCD for `gameboy`, liquid glass for `glass`, and so on. Shaders are experimental in onon, so turn them on in `config.lua` and restart onon:
 
 ```lua
 onon.options.shaders = true
 ```
 
-Without them `liquid` looks like `glass`, and the others like the theme in their folder, with see-through panes.
+Without them each theme looks as it always has.
 
 ## Writing your own
 

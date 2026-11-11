@@ -5,6 +5,11 @@
 -- the selected row is shown in inverse video. :colors alt burns the pages
 -- themselves into phosphor green.
 --
+-- With onon.options.shaders = true, the menus, status pill, tabs and link
+-- preview draw phosphor.glsl, beside this file: what is behind each pane
+-- in phosphor green, bulging toward the edges, with scanlines, a soft
+-- bloom and a faint flicker as a refresh rolls up the glass.
+--
 -- Showcases: fonts, the cursor element, draw functions writing text with
 -- canvas:text, and a theme that turns motion off altogether.
 --
@@ -38,7 +43,7 @@ local function terminal_loader(canvas, box, state)
   end
 end
 
-return {
+local theme = {
   base = "classic",
 
   background = "#020603",
@@ -155,3 +160,20 @@ return {
     title_close = { fill = "accent", text = "panel" },
   },
 }
+
+-- With shaders on, the panes draw phosphor.glsl, under fills thin enough
+-- to show it.
+if onon.options.shaders then
+  local e = theme.elements
+
+  for _, name in ipairs({ "panel", "status_left", "tab", "link_preview" }) do
+    e[name].shader = "phosphor.glsl"
+  end
+  e.panel.draw = nil -- the shader draws the scanlines
+  e.panel.fill = "panel/30"
+  e.status_left.fill = "status_bar/30"
+  e.tab.fill = "status_bar/30"
+  e.link_preview.fill = "panel/30"
+end
+
+return theme
