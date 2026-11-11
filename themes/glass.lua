@@ -13,10 +13,16 @@
 --
 -- Pick it with :theme glass.
 
--- Panels: the pane, then a sheen along its top edge where light catches it.
+-- Panels: the pane, then a sheen along its top edge where light catches it,
+-- fading out down the header. The canvas has no gradients, so the sheen is
+-- layers of faint glass, each a little taller, brightest where they all
+-- overlap at the top.
 local function sheen(canvas, box, state)
   canvas:default()
-  canvas:rect(1, 1, box.w - 2, math.min(40, box.h / 3), "#ffffff/7", 15)
+  local h, layers = math.min(44, box.h / 2), 8
+  for i = 1, layers do
+    canvas:rect(1, 1, box.w - 2, h * i / layers, "#ffffff/1", 15)
+  end
   canvas:rect(16, 1, box.w - 32, 1, "#ffffff/45")
 end
 
