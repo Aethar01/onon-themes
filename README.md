@@ -6,13 +6,16 @@ Example themes for [onon](https://github.com/Aethar01/onon), a quiet reader for 
 |---|---|
 | [`brutalist`](./themes/brutalist.lua) | Black lines, hard shadows and safety yellow. |
 | [`gameboy`](./themes/gameboy.lua) | The four greens of a 1989 handheld, with pixel corners. |
-| [`glass`](./themes/glass.lua) | Frosted, translucent panes floating over the page. |
+| [`glass`](./themes/glass/glass.lua) | Frosted, translucent panes floating over the page. |
+| [`liquid`](./themes/glass/liquid.lua) | Glass run through a shader: the page behind each pane blurred, bent at the rim and lit along its edge. |
 | [`manuscript`](./themes/manuscript.lua) | Iron-gall ink on vellum, with panels torn from the page. |
 | [`phosphor`](./themes/phosphor.lua) | The green-screen terminals of the 1980s. |
 | [`synthwave`](./themes/synthwave.lua) | Pink and cyan neon on deep violet. |
 | [`vampire`](./themes/vampire.lua) | Blood on black, for reading after dark. |
 
 ## Install
+
+These themes need onon 0.14.10 or newer, which finds themes kept in folders of their own, as `glass` and `liquid` are.
 
 Clone the repository into your onon directory and link its `themes` directory beside it:
 
@@ -40,6 +43,14 @@ Copy-Item -Recurse "$env:APPDATA\onon\onon-themes\themes\*" "$env:APPDATA\onon\t
 ```
 
 Each one also has an alternate colour mode, which `:colors alt` turns on.
+
+`liquid` draws its panes with a GLSL shader. Shaders are experimental in onon, so turn them on in `config.lua` and restart onon:
+
+```lua
+onon.options.shaders = true
+```
+
+Without them `liquid` looks like `glass`.
 
 ## Writing your own
 
