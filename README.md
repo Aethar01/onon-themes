@@ -5,6 +5,7 @@ Example themes for [onon](https://github.com/Aethar01/onon), a quiet reader for 
 | Theme | Look |
 |---|---|
 | [`brutalist`](./themes/brutalist/brutalist.lua) | Black lines, hard shadows and safety yellow. |
+| [`forest-rain`](./themes/forest-rain/forest-rain.lua) | Pine, moss and ember: a warm cabin in the woods while it rains. |
 | [`gameboy`](./themes/gameboy/gameboy.lua) | The four greens of a 1989 handheld, with pixel corners. |
 | [`glass`](./themes/glass/glass.lua) | Frosted, translucent panes floating over the page. |
 | [`manuscript`](./themes/manuscript/manuscript.lua) | Iron-gall ink on vellum, with panels torn from the page. |
@@ -43,7 +44,7 @@ Copy-Item -Recurse "$env:APPDATA\onon\onon-themes\themes\*" "$env:APPDATA\onon\t
 
 Each one also has an alternate colour mode, which `:colors alt` turns on.
 
-Each theme also draws its panes with a GLSL shader when shaders are on: a CRT tube for `phosphor`, a worn tape for `synthwave`, a dithered LCD for `gameboy`, liquid glass for `glass`, and so on. Shaders are experimental in onon, so turn them on in `config.lua` and restart onon:
+Each theme also draws its panes with a GLSL shader when shaders are on: a CRT tube for `phosphor`, a worn tape for `synthwave`, a dithered LCD for `gameboy`, liquid glass for `glass`, rain running down a cabin window for `forest-rain`, and so on. Shaders are experimental in onon, so turn them on in `config.lua` and restart onon:
 
 ```lua
 onon.options.shaders = true
