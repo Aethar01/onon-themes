@@ -15,7 +15,7 @@ Example themes for [onon](https://github.com/Aethar01/onon), a quiet reader for 
 
 ## Install
 
-These themes need onon 0.14.12 or newer, which finds themes kept in folders of their own and lets them see whether shaders are on.
+These themes need onon 0.14.15 or newer, which finds themes kept in folders of their own, lets them see whether shaders are on, and gives them the tab, hover, document, stretch and press motion they move with.
 
 Clone the repository into your onon directory and link its `themes` directory beside it:
 

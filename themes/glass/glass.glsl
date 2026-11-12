@@ -1,8 +1,10 @@
-// Liquid glass: what is behind the pane, blurred, bent at the rim as by a
-// lens, with its colours split a little and light caught along the edge.
+// Liquid glass: what is behind the pane, blurred, and at the rim, as at
+// the thick edge of a lens, what lies just beyond it bent in, with its
+// colours split a little and light caught along the edge.
 
 const float RIM = 18.0;   // how far in from the edge the glass bends, in logical pixels
-const float BEND = 26.0;  // how far it bends what is behind it
+const float REACH = 24.0; // how far beyond the edge the rim draws from: with the blur
+                          // and the split, within the 32 iBackdrop reaches
 const float BLUR = 5.0;   // how soft the glass is
 const int TAPS = 20;
 
@@ -11,7 +13,7 @@ vec3 soft(vec2 coord, float radius) {
 	for (int i = 0; i < TAPS; i++) {
 		float r = sqrt((float(i) + 0.5) / float(TAPS)) * radius;
 		float a = float(i) * 2.39996;
-		sum += texture(iChannel0, (coord + r * vec2(cos(a), sin(a))) / iResolution.xy).rgb;
+		sum += iBackdrop(coord + r * vec2(cos(a), sin(a))).rgb;
 	}
 	return sum / float(TAPS);
 }
@@ -22,7 +24,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
 	vec2 n = vec2(iShape(fragCoord + vec2(1.0, 0.0)) - iShape(fragCoord - vec2(1.0, 0.0)),
 	              iShape(fragCoord + vec2(0.0, 1.0)) - iShape(fragCoord - vec2(0.0, 1.0)));
 	n = dot(n, n) > 0.0 ? normalize(n) : vec2(0.0);
-	vec2 bend = -n * t * t * t * BEND * iScale;
+	vec2 bend = n * t * t * t * REACH * iScale;
 	float blur = BLUR * iScale;
 	vec3 color = vec3(soft(fragCoord + bend * 1.12, blur).r,
 	                  soft(fragCoord + bend, blur).g,
