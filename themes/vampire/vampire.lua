@@ -144,6 +144,11 @@ local theme = {
     prompt = "glide 150ms ease-out",
     cursor = "glide 60ms ease-out",
     edges = "slide 180ms ease-out", -- the coffins slide out from the edges
+    -- The blood runs slowly to the next coffin, its tail dragging after.
+    tab_selection = "glide 340ms cubic-bezier(0.2, 0.9, 0.25, 1) stretch:45ms",
+    hover = { enter = "fade 200ms ease-in", exit = "fade 420ms ease-out" },
+    -- A document sinks into the dark as the next descends out of it.
+    document = "fade y:12px 380ms cubic-bezier(0.4, 0, 0.2, 1)",
   },
 
   elements = {

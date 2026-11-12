@@ -141,6 +141,11 @@ local theme = {
     prompt = "glide 100ms ease-out",
     cursor = "glide 50ms ease-out",
     edges = "slide 220ms ease-in-out", -- the bars slide in like a sheet drawn across
+    -- The tab shown is underlined anew as a row is, and another tab's
+    -- document is a page turned: the one before is drawn away across it.
+    tab_selection = "wipe from:left 220ms ease-out",
+    hover = "fade 200ms ease",
+    document = "wipe 380ms ease-in-out",
   },
 
   elements = {
