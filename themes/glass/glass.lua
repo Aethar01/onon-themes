@@ -2,19 +2,22 @@
 --
 -- Translucent menus and status pills with soft rounded corners and deep
 -- diffuse shadows, so the document shows through everything that floats
--- over it. Menus rise into focus and settle, their rows drifting up one by
--- one, the selection and the status pills ease into place, and the pills
--- glide in and out from the window's edges. :colors alt is the same glass
--- at night.
+-- over it. Everything moves alike, on one spring: menus and messages pop
+-- in as bubbles of glass, the selection, the tabs and the status pills
+-- glide into place, and the pills glide in and out from the window's
+-- edges, what a choice moves stretching as a drop of glass does. :colors
+-- alt is the same glass at night.
 --
--- With onon.options.shaders = true, the menus, status pills and tabs draw
--- glass.glsl, beside this file: what is behind each pane, softened, bent
--- at the rim as by a lens, and lit along its edge. Their fills are
+-- With onon.options.shaders = true, the menus, status pills, tabs and the
+-- selection draw glass.glsl, beside this file: what is behind each pane,
+-- softened, what lies just beyond it bent in at its rim as by a lens, and
+-- light caught along its edge. Their fills are
 -- thinner then, tinting the shader rather than standing in for it.
 --
 -- Showcases: translucent fills ("#RRGGBBAA" and "colour/opacity"), element
--- opacity, motion with several tracks and staggered rows, and a reduced
--- motion table that crossfades where the rest moves.
+-- opacity, one motion shared by every target through Lua locals, springs
+-- and stretch, and a reduced motion table that crossfades where the rest
+-- moves.
 --
 -- Pick it with :theme glass.
 
@@ -42,6 +45,13 @@ local function orbit(canvas, box, state)
     canvas:rect(x - size / 2, y - size / 2, size, size, "accent/" .. math.floor(35 + 60 * glow), size / 2)
   end
 end
+
+-- The glass's one motion: how everything moves, and how far what a choice
+-- moves stretches; and so how panes come, a bubble of glass, and go.
+local move = "380ms spring(260, 27)"
+local stretch = "stretch:35ms"
+local come = "fade scale:0.9 " .. move .. " " .. stretch
+local go = "fade scale:0.96 180ms ease-in"
 
 local theme = {
   base = "moss",
@@ -83,25 +93,41 @@ local theme = {
   status_bar_style = "pill",
   tab_bar_style = "pill",
 
+  -- Everything that moves moves alike, as the tab shown does: on one
+  -- spring, settling with a little give (move). What a choice moves
+  -- stretches as it goes (stretch), as a drop of glass does, and panes
+  -- and messages pop in as bubbles of it (come), and go quickly (go);
+  -- what only follows the pointer does not stretch.
   motion = {
-    -- Panes rise into focus and settle, and sink back as they go.
-    panel = {
-      enter = "fade rise zoom 260ms cubic-bezier(0.22, 1, 0.36, 1)",
-      exit = "fade zoom 180ms ease-in",
-    },
-    rows = { enter = "fade y:6px 220ms ease-out stagger:12ms" }, -- the rows drift up one by one
-    message = "fade rise 320ms ease-in-out",
-    selection = "glide 200ms cubic-bezier(0.22, 1, 0.36, 1)",
-    overview_selection = "glide 200ms cubic-bezier(0.22, 1, 0.36, 1)",
-    prompt = "glide 240ms cubic-bezier(0.22, 1, 0.36, 1)",
-    cursor = "glide 90ms ease-out",
-    edges = "fade slide 240ms cubic-bezier(0.22, 1, 0.36, 1)", -- the pills glide in from the edges
+    panel = { enter = come, exit = go },
+    rows = "none", -- they come with their pane
+    message = { enter = come, exit = go },
+    -- The selection follows the pointer, so it glides there without a
+    -- stretch. Held down, by Enter or the pointer, the glass gives under
+    -- it, and springs back as it is let go and the row is chosen.
+    selection = { change = "glide " .. move, press = "scale:0.96 " .. move },
+    overview_selection = "glide " .. move,
+    -- The tab shown, which a choice moves, stretches towards the tab, its
+    -- far end catching up after. The tabs glide to their places as they
+    -- open, close and move, and a tab held down gives as a row does.
+    tab_selection = { change = "glide " .. move .. " " .. stretch, press = "scale:0.96 " .. move },
+    hover = { enter = "fade 140ms ease-out", exit = "fade 260ms ease-out" },
+    -- Another tab's document clears into view as the last one fades.
+    document = "fade " .. move,
+    -- The status pill stretches thin to take a prompt's or a message's
+    -- text, and swells a little as it settles, as the tab shown does.
+    prompt = "glide " .. move .. " " .. stretch,
+    cursor = "glide 90ms ease-out", -- quick, to keep up with typing
+    -- The pills glide in from the edges, stretching as they come.
+    edges = "fade slide " .. move .. " " .. stretch,
     -- With less motion the glass only clears and clouds: nothing moves, and
     -- the selection crossfades from row to row.
     reduced = {
       panel = { enter = "fade 220ms ease-out", exit = "fade 160ms ease-in" },
       selection = "crossfade 160ms ease-in-out",
       overview_selection = "crossfade 160ms ease-in-out",
+      tab_selection = "crossfade 160ms ease-in-out",
+      document = "fade 180ms ease-out",
     },
   },
 
@@ -122,7 +148,7 @@ local theme = {
       secondary = "muted",
       padding = { 12, 18, 10, 18 },
     },
-    row = { radius = 8, padding = { 5, 8 } },
+    row = { radius = 14, padding = { 5, 8 } }, -- the theme's radius, so its selection is rounded as the panes are
     row_selected = {
       fill = "accent/16",
       border = { width = 0 },
@@ -186,7 +212,16 @@ local theme = {
       text = "muted",
       padding = { 4, 16 },
     },
-    tab_selected = { border = { width = 1, color = "border/45", sides = "all" }, text = "foreground", bold = true },
+    -- The tab shown is a brighter pane that glides over the others, which
+    -- clear where it passes.
+    tab_selected = {
+      fill = "panel/85",
+      border = { width = 1, color = "border/80", sides = "all" },
+      shadow = "0 12 30 0 shadow/60, 0 1 3 0 shadow/30",
+      text = "foreground",
+      bold = true,
+    },
+    tab_hover = { fill = "status_bar/88", border = { width = 1, color = "border/65", sides = "all" }, text = "foreground" },
 
     title_bar = { fill = "status_bar/80" },
     title_button = { fill = "foreground/10" },
@@ -209,6 +244,16 @@ if onon.options.shaders then
   e.panel.fill = "panel/38"
   e.status_left.fill = "status_bar/30"
   e.tab.fill = "status_bar/30"
+  -- The selection is a pane of the same glass, glass.glsl, under the row
+  -- or tab it selects, its text drawn clear over it, untinted, with the
+  -- panes' rim and shadow.
+  e.row_selected.shader = "glass.glsl"
+  e.row_selected.fill = "panel/30"
+  e.row_selected.border = { width = 1, color = "border/45", sides = "all" }
+  e.tab_selected.shader = "glass.glsl"
+  e.tab_selected.fill = "panel/45"
+  e.tab_selected.shadow = e.tab.shadow
+  e.tab_hover.fill = "status_bar/48"
 end
 
 return theme

@@ -133,6 +133,12 @@ local theme = {
     prompt = "glide 200ms cubic-bezier(0.3, 1.3, 0.5, 1)",
     cursor = "glide 70ms ease-out",
     edges = "slide 220ms cubic-bezier(0.3, 1.3, 0.5, 1)", -- the pills spring in from the edges too
+    -- The neon ring round the tab shown snaps to the next on a loose
+    -- spring, streaking out ahead of itself and ringing as it lands.
+    tab_selection = "glide 380ms spring(300, 14) stretch:60ms",
+    hover = { enter = "fade 70ms ease-out", exit = "fade 260ms ease-out" }, -- a tube flicks on and glows off
+    -- Documents race past, the next one shooting in and overrunning a little.
+    document = "fade x:-48px 300ms cubic-bezier(0.3, 1.3, 0.5, 1)",
   },
 
   elements = {

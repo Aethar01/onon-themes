@@ -155,11 +155,18 @@ local theme = {
     prompt = "glide 200ms ease-out",
     cursor = "glide 80ms ease-out",
     edges = "fade slide 260ms ease-out",
+    -- The ember drips to the next tab, a long tail running after it.
+    tab_selection = "glide 300ms ease-out stretch:70ms",
+    hover = "fade 160ms ease-out",
+    -- A document runs down the pane and away as the next falls into place.
+    document = "fade y:14px 340ms ease-out",
     -- With less motion the rain stops: things only fade in and out.
     reduced = {
       panel = { enter = "fade 240ms ease-out", exit = "fade 180ms ease-in" },
       selection = "crossfade 90ms ease-out",
       overview_selection = "crossfade 110ms ease-out",
+      tab_selection = "crossfade 120ms ease-out",
+      document = "fade 200ms ease-out",
     },
   },
 

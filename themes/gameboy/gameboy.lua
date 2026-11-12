@@ -13,7 +13,8 @@
 -- shades, and a faint grid between them.
 --
 -- Showcases: a small fixed palette, shape functions generating pixel
--- stairs at any size, and pixel art drawn from a bitmap in Lua.
+-- stairs at any size, pixel art drawn from a bitmap in Lua, and motion in
+-- hard steps.
 --
 -- Pick it with :theme gameboy.
 
@@ -128,7 +129,22 @@ local theme = {
   status_bar_style = "pill",
   tab_bar_style = "pill",
 
-  motion = { scale = 0 },
+  -- Nothing glides on a handheld: things move in a few hard steps, and
+  -- fades step through the screen's shades, as its games' do.
+  motion = {
+    panel = "fade 160ms steps(4)",
+    rows = "none",
+    selection = "glide 90ms steps(3)",
+    overview_selection = "glide 120ms steps(3)",
+    tab_selection = "glide 160ms steps(4)",
+    hover = "fade 60ms steps(2)",
+    document = "fade 240ms steps(4)",
+    prompt = "glide 90ms steps(3)",
+    message = "fade 120ms steps(3)",
+    cursor = "none",
+    edges = "slide 160ms steps(4)",
+    title_bar = "fade 100ms steps(2)",
+  },
 
   elements = {
     panel = {
