@@ -194,9 +194,14 @@ local theme = {
 }
 
 -- With shaders on, the panes draw glass.glsl, under fills thin enough
--- to show it.
+-- to show it. Glass lets most light through, so it casts lighter shadows
+-- than the frosted panes do, which show through it.
 if onon.options.shaders then
   local e = theme.elements
+  e.panel.shadow = "0 18 44 0 shadow/30, 0 2 6 0 shadow/20"
+  e.link_preview.shadow = e.panel.shadow
+  e.status_left.shadow = "0 10 28 0 shadow/25, 0 1 3 0 shadow/18"
+  e.tab.shadow = e.status_left.shadow
 
   for _, name in ipairs({ "panel", "status_left", "tab", "link_preview" }) do
     e[name].shader = "glass.glsl"
