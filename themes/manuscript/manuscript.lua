@@ -5,7 +5,7 @@
 -- hand, the pen drawing each line anew, and the loader is a pen writing a
 -- line. :colors alt turns the pages to sepia for reading by lamplight.
 --
--- With onon.options.shaders = true, the menus, status pill, tabs and link
+-- With onon.options.shaders = true, the menus, status bar, tab bar and link
 -- preview draw manuscript.glsl, beside this file: what is behind each
 -- pane faint and yellowed through the sheet, with its fibres and grain,
 -- and ink soaked in along its torn edges.
@@ -221,12 +221,14 @@ local theme = {
 if onon.options.shaders then
   local e = theme.elements
 
-  for _, name in ipairs({ "panel", "status_left", "tab", "link_preview" }) do
+  -- The bars are one sheet each, so the ink soaks in along the bar's edges
+  -- rather than around each of its sections or tabs.
+  for _, name in ipairs({ "panel", "status", "tab_bar", "link_preview" }) do
     e[name].shader = "manuscript.glsl"
   end
   e.panel.fill = "panel/30"
-  e.status_left.fill = "status_bar/30"
-  e.tab.fill = "status_bar/30"
+  e.status.fill = "status_bar/30"
+  e.tab_bar.fill = "status_bar/30"
   e.link_preview.fill = "panel/30"
 end
 
