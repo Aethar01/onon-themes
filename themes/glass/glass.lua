@@ -8,11 +8,13 @@
 -- edges, what a choice moves stretching as a drop of glass does. :colors
 -- alt is the same glass at night.
 --
--- With onon.options.shaders = true, the menus, status pills, tabs and the
--- selection draw glass.glsl, beside this file: what is behind each pane,
--- softened, what lies just beyond it bent in at its rim as by a lens, and
--- light caught along its edge. Their fills are
--- thinner then, tinting the shader rather than standing in for it.
+-- With onon.options.shaders = true, the menus, status pills and tabs draw
+-- glass.glsl, beside this file: what is behind each pane, softened, what
+-- lies further in drawn out to its rim as by a lens, its colours drifting
+-- apart there, and a thin highlight along the top. The selection draws
+-- glass-selected.glsl, the same glass catching light all round its edge.
+-- Their fills are thinner then, tinting the shader rather than standing
+-- in for it.
 --
 -- Showcases: translucent fills ("#RRGGBBAA" and "colour/opacity"), element
 -- opacity, one motion shared by every target through Lua locals, springs
@@ -78,7 +80,7 @@ local theme = {
     muted = "#8a93a6",
     accent = "#7aa2ff",
     panel = "#1c2130",
-    border = "#ffffff",
+    border = "#1c2130", -- the panel's: smoked glass has no bright rim
     status_bar = "#1a1f2b",
     selection = "#2a3f73", -- added over dark pages
     search = "#5c4a14",
@@ -155,7 +157,7 @@ local theme = {
       padding = { 5, 8 },
     },
     row_disabled = { opacity = 0.6 },
-    heading = { text = "accent" },
+    heading = { text = "foreground", bold = true },
     button = { radius = 10, fill = "accent/12", border = { width = 1, color = "accent/30" }, text = "accent" },
     scrollbar = { fill = "foreground/25", width = 3, margin = { 0, 4, 0, 0 } },
     swatch = { shape = "pill", border = { width = 1, color = "foreground/20" } },
@@ -244,13 +246,17 @@ if onon.options.shaders then
   e.panel.fill = "panel/38"
   e.status_left.fill = "status_bar/30"
   e.tab.fill = "status_bar/30"
-  -- The selection is a pane of the same glass, glass.glsl, under the row
-  -- or tab it selects, its text drawn clear over it, untinted, with the
-  -- panes' rim and shadow.
-  e.row_selected.shader = "glass.glsl"
-  e.row_selected.fill = "panel/30"
-  e.row_selected.border = { width = 1, color = "border/45", sides = "all" }
-  e.tab_selected.shader = "glass.glsl"
+  -- The selection is a bead of the same glass, glass-selected.glsl, under
+  -- the row or tab it selects, its text drawn clear over it: it catches
+  -- light all round its edge, where the panes catch it only along the
+  -- top, and floats a little above them, so it stands out without a
+  -- colour of its own. A row's is shaded faintly with the text's colour,
+  -- a little darker by day and lighter by night.
+  e.row_selected.shader = "glass-selected.glsl"
+  e.row_selected.fill = "foreground/8"
+  e.row_selected.border = { width = 1, color = "foreground/14", sides = "all" }
+  e.row_selected.shadow = "0 4 14 0 shadow/25"
+  e.tab_selected.shader = "glass-selected.glsl"
   e.tab_selected.fill = "panel/45"
   e.tab_selected.shadow = e.tab.shadow
   e.tab_hover.fill = "status_bar/48"
