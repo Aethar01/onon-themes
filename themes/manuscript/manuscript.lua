@@ -206,6 +206,7 @@ local theme = {
       radius = 0,
       border = { width = 1, color = "border" },
       shadow = "1 4 10 0 shadow/70",
+      padding = 8,
     },
     page = { shadow = "0 1 2 0 shadow/60, 1 5 14 0 shadow/40" },
     loader = { fill = "foreground", draw = writing },

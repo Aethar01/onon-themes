@@ -169,6 +169,7 @@ local theme = {
       radius = 0,
       border = { width = 3, color = "border" },
       shadow = "8 8 0 0 border",
+      padding = 8,
     },
     page = { border = { width = 2, color = "border" }, shadow = "7 7 0 0 border" },
     loader = { fill = "border", draw = stamping },

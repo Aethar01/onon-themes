@@ -209,6 +209,7 @@ local theme = {
       radius = 8,
       border = { width = 1, color = "accent/80" },
       shadow = "0 0 20 2 accent/45, 0 0 46 8 " .. cyan .. "/16",
+      padding = 8,
     },
     page = { shadow = "0 0 24 2 accent/25, 0 0 60 10 " .. cyan .. "/10" },
     loader = { fill = "accent", draw = sunset },

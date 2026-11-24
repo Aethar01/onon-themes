@@ -145,6 +145,7 @@ local theme = {
       radius = 0,
       border = { width = 1, color = "accent/70" },
       shadow = "0 0 16 0 accent/22",
+      padding = 6,
     },
     page = { shadow = "0 0 0 1 accent/30, 0 0 26 0 accent/12" },
     loader = { fill = "accent", draw = terminal_loader },

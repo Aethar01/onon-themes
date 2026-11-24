@@ -195,9 +195,11 @@ local theme = {
       padding = 5,
     },
     link_preview = {
-      radius = 12,
+      radius = 16,
+      fill = "panel/78",
       border = { width = 1, color = "border/50" },
       shadow = "0 18 44 0 shadow/70, 0 2 6 0 shadow/35",
+      padding = 8,
     },
     page = { shadow = "0 12 32 0 shadow/45, 0 1 3 0 shadow/35" },
     loader = { fill = "accent", draw = orbit },
@@ -244,6 +246,7 @@ if onon.options.shaders then
     e[name].shader = "glass.glsl"
   end
   e.panel.fill = "panel/38"
+  e.link_preview.fill = "panel/38"
   e.status_left.fill = "status_bar/30"
   e.tab.fill = "status_bar/30"
   -- The selection is a bead of the same glass, glass-selected.glsl, under

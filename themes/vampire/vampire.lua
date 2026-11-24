@@ -221,6 +221,7 @@ local theme = {
       radius = 2,
       border = { width = 1, color = "accent/55" },
       shadow = "0 0 20 0 #8a0a1f/45, 0 8 20 shadow",
+      padding = 8,
     },
     page = { shadow = "0 0 0 1 #000000/50, 0 10 30 0 #4a000c/45" },
     loader = { fill = "accent", draw = bleeding_loader },

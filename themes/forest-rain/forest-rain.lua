@@ -237,6 +237,7 @@ local theme = {
       radius = 8,
       border = { width = 1, color = "border" },
       shadow = "0 0 26 0 #e39a4c/10, 0 14 32 0 shadow/70",
+      padding = 8,
     },
     page = { shadow = "0 0 40 0 #e39a4c/8, 0 10 28 0 shadow/60" },
     loader = { fill = "accent", draw = puddle },

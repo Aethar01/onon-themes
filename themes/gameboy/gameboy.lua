@@ -211,6 +211,7 @@ local theme = {
       radius = 0,
       border = { width = 3, color = darkest },
       shadow = "4 4 0 0 " .. dark,
+      padding = 6,
     },
     page = { shadow = "4 4 0 0 " .. dark },
     loader = { fill = darkest, draw = beating_heart },
