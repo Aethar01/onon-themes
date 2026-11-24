@@ -263,6 +263,12 @@ if onon.options.shaders then
   e.tab_selected.fill = "panel/45"
   e.tab_selected.shadow = e.tab.shadow
   e.tab_hover.fill = "status_bar/48"
+  e.hint.shader = "glass-selected.glsl"
+  e.hint.fill = "panel/45"
+  e.hint.border = { width = 1, color = "foreground/16", sides = "all" }
+  e.hint.shadow = "0 4 12 0 shadow/25, 0 1 3 0 shadow/18"
+  e.hint.text = "foreground"
+  e.hint.secondary = "muted"
 end
 
 return theme
